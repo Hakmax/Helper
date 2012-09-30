@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="helperModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="helps">
+      <EntityTypeMapping TypeName="helperModel.helps">
+        <MappingFragment StoreEntitySet="helps">
+          <ScalarProperty Name="headerHelp" ColumnName="headerHelp" />
+          <ScalarProperty Name="id_help" ColumnName="id_help" />
+          <ScalarProperty Name="helpText" ColumnName="helpText" />
+          <ScalarProperty Name="id_Type" ColumnName="id_Type" />
+          <ScalarProperty Name="dateAdd" ColumnName="dateAdd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="helpType">
+      <EntityTypeMapping TypeName="helperModel.helpType">
+        <MappingFragment StoreEntitySet="helpType">
+          <ScalarProperty Name="id_HelpType" ColumnName="id_HelpType" />
+          <ScalarProperty Name="name_TypeHelp" ColumnName="name_TypeHelp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

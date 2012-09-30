@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="helperModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="helps" EntityType="helperModel.helps" />
+    <EntitySet Name="helpType" EntityType="helperModel.helpType" />
+    <AssociationSet Name="helps_TypeHelp" Association="helperModel.helps_TypeHelp">
+      <End Role="helpType" EntitySet="helpType" />
+      <End Role="helps" EntitySet="helps" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="helps">
+    <Key>
+      <PropertyRef Name="id_help" />
+    </Key>
+    <Property Name="id_help" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="helpText" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+    <Property Name="id_Type" Type="Int32" Nullable="false" />
+    <Property Name="dateAdd" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="helpType" Relationship="helperModel.helps_TypeHelp" FromRole="helps" ToRole="helpType" />
+    <Property Type="String" Name="headerHelp" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="helpType">
+    <Key>
+      <PropertyRef Name="id_HelpType" />
+    </Key>
+    <Property Name="id_HelpType" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name_TypeHelp" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="helps" Relationship="helperModel.helps_TypeHelp" FromRole="helpType" ToRole="helps" />
+  </EntityType>
+  <Association Name="helps_TypeHelp">
+    <End Role="helpType" Type="helperModel.helpType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="helps" Type="helperModel.helps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="helpType">
+        <PropertyRef Name="id_HelpType" />
+      </Principal>
+      <Dependent Role="helps">
+        <PropertyRef Name="id_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

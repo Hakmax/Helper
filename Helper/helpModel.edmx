@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="helperModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="helperModelStoreContainer">
+          <EntitySet Name="helps" EntityType="helperModel.Store.helps" store:Type="Tables" />
+          <EntitySet Name="helpType" EntityType="helperModel.Store.helpType" store:Type="Tables" />
+          <AssociationSet Name="helps_TypeHelp" Association="helperModel.Store.helps_TypeHelp">
+            <End Role="helpType" EntitySet="helpType" />
+            <End Role="helps" EntitySet="helps" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="helps">
+          <Key>
+            <PropertyRef Name="id_help" />
+          </Key>
+          <Property Name="id_help" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="helpText" Type="nvarchar" MaxLength="1000" />
+          <Property Name="id_Type" Type="int" Nullable="false" />
+          <Property Name="dateAdd" Type="datetime" />
+          <Property Name="headerHelp" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="helpType">
+          <Key>
+            <PropertyRef Name="id_HelpType" />
+          </Key>
+          <Property Name="id_HelpType" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name_TypeHelp" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="helps_TypeHelp">
+          <End Role="helpType" Type="helperModel.Store.helpType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="helps" Type="helperModel.Store.helps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="helpType">
+              <PropertyRef Name="id_HelpType" />
+            </Principal>
+            <Dependent Role="helps">
+              <PropertyRef Name="id_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="helperModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="helps" EntityType="helperModel.helps" />
+          <EntitySet Name="helpType" EntityType="helperModel.helpType" />
+          <AssociationSet Name="helps_TypeHelp" Association="helperModel.helps_TypeHelp">
+            <End Role="helpType" EntitySet="helpType" />
+            <End Role="helps" EntitySet="helps" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="helps">
+          <Key>
+            <PropertyRef Name="id_help" />
+          </Key>
+          <Property Name="id_help" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="helpText" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="id_Type" Type="Int32" Nullable="false" />
+          <Property Name="dateAdd" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="helpType" Relationship="helperModel.helps_TypeHelp" FromRole="helps" ToRole="helpType" />
+          <Property Type="String" Name="headerHelp" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="helpType">
+          <Key>
+            <PropertyRef Name="id_HelpType" />
+          </Key>
+          <Property Name="id_HelpType" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name_TypeHelp" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="helps" Relationship="helperModel.helps_TypeHelp" FromRole="helpType" ToRole="helps" />
+        </EntityType>
+        <Association Name="helps_TypeHelp">
+          <End Role="helpType" Type="helperModel.helpType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="helps" Type="helperModel.helps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="helpType">
+              <PropertyRef Name="id_HelpType" />
+            </Principal>
+            <Dependent Role="helps">
+              <PropertyRef Name="id_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="helperModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="helps">
+            <EntityTypeMapping TypeName="helperModel.helps">
+              <MappingFragment StoreEntitySet="helps">
+                <ScalarProperty Name="headerHelp" ColumnName="headerHelp" />
+                <ScalarProperty Name="id_help" ColumnName="id_help" />
+                <ScalarProperty Name="helpText" ColumnName="helpText" />
+                <ScalarProperty Name="id_Type" ColumnName="id_Type" />
+                <ScalarProperty Name="dateAdd" ColumnName="dateAdd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="helpType">
+            <EntityTypeMapping TypeName="helperModel.helpType">
+              <MappingFragment StoreEntitySet="helpType">
+                <ScalarProperty Name="id_HelpType" ColumnName="id_HelpType" />
+                <ScalarProperty Name="name_TypeHelp" ColumnName="name_TypeHelp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

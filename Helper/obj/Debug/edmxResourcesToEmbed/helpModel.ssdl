@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="helperModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="helperModelStoreContainer">
+    <EntitySet Name="helps" EntityType="helperModel.Store.helps" store:Type="Tables" />
+    <EntitySet Name="helpType" EntityType="helperModel.Store.helpType" store:Type="Tables" />
+    <AssociationSet Name="helps_TypeHelp" Association="helperModel.Store.helps_TypeHelp">
+      <End Role="helpType" EntitySet="helpType" />
+      <End Role="helps" EntitySet="helps" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="helps">
+    <Key>
+      <PropertyRef Name="id_help" />
+    </Key>
+    <Property Name="id_help" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="helpText" Type="nvarchar" MaxLength="1000" />
+    <Property Name="id_Type" Type="int" Nullable="false" />
+    <Property Name="dateAdd" Type="datetime" />
+    <Property Name="headerHelp" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="helpType">
+    <Key>
+      <PropertyRef Name="id_HelpType" />
+    </Key>
+    <Property Name="id_HelpType" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name_TypeHelp" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="helps_TypeHelp">
+    <End Role="helpType" Type="helperModel.Store.helpType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="helps" Type="helperModel.Store.helps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="helpType">
+        <PropertyRef Name="id_HelpType" />
+      </Principal>
+      <Dependent Role="helps">
+        <PropertyRef Name="id_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
