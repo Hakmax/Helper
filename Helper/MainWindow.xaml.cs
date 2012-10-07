@@ -18,23 +18,56 @@ namespace Helper
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            List<helps> listHelps = new List<helps>();
-            using (Entities context = new Entities())
-            {
-                listHelps = context.helps.ToList();
-                //
-            }
-            helpersListView.ItemsSource = listHelps;
+            helpersListView.ItemsSource = DataAccess.GetAllHelp();
         }
-    }
 
-    public static class Example
-    {
-        public static string Field { get; set; }        
+        private void settingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show((helpersListView.SelectedItems[0] as helps).id_help.ToString());
+        }
+
+        private void helpersListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (helpersListView.SelectedItem == null)
+                return;
+            concreteHelpForm concreteForm = new concreteHelpForm((helpersListView.SelectedItems[0] as helps));
+            concreteForm.Show();
+        }
+
+        private void exitButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void categoriesButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            addNewCategory categoriesForm = new addNewCategory();
+            categoriesForm.ShowDialog();
+
+        }
+
+        private void okAuthorPanelButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            aboutAuthorPanel.Visibility = System.Windows.Visibility.Collapsed;
+        }
+
+        private void authorButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            aboutAuthorPanel.Visibility = System.Windows.Visibility.Visible;
+
+        }
+
+        private void Grid_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (aboutAuthorPanel.Visibility == System.Windows.Visibility.Visible)
+                e.Handled = true;
+        }
     }
 }

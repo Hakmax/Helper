@@ -1,4 +1,3 @@
-E:\CSharp\Helper\Helper\bin\Debug\helper.sdf
 E:\CSharp\Helper\Helper\bin\Debug\Helper.exe.config
 E:\CSharp\Helper\Helper\bin\Debug\Helper.exe
 E:\CSharp\Helper\Helper\bin\Debug\Helper.pdb
@@ -6,10 +5,38 @@ E:\CSharp\Helper\Helper\obj\Debug\MainWindow.baml
 E:\CSharp\Helper\Helper\obj\Debug\App.baml
 E:\CSharp\Helper\Helper\obj\Debug\MainWindow.g.cs
 E:\CSharp\Helper\Helper\obj\Debug\App.g.cs
-E:\CSharp\Helper\Helper\obj\Debug\Helper_Content.g.cs
 E:\CSharp\Helper\Helper\obj\Debug\Helper_MarkupCompile.cache
 E:\CSharp\Helper\Helper\obj\Debug\Helper.g.resources
 E:\CSharp\Helper\Helper\obj\Debug\Helper.Properties.Resources.resources
 E:\CSharp\Helper\Helper\obj\Debug\Helper.csproj.GenerateResource.Cache
 E:\CSharp\Helper\Helper\obj\Debug\Helper.exe
 E:\CSharp\Helper\Helper\obj\Debug\Helper.pdb
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\bin\Debug\Helper.exe.config
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\Helper.exe
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\Helper.pdb
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\bin\Debug\helper.sdf
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\bin\Debug\Helper.exe
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\bin\Debug\Helper.pdb
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\Helper.csprojResolveAssemblyReference.cache
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\MainWindow.baml
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\App.baml
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\MainWindow.g.cs
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\App.g.cs
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\Helper_Content.g.cs
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\Helper_MarkupCompile.cache
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\Helper.g.resources
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\Helper.Properties.Resources.resources
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\Helper.csproj.GenerateResource.Cache
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\concreteHelpForm.baml
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\concreteHelpForm.g.cs
+C:\Users\Max\Documents\Visual Studio 2012\Projects\Helper\Helper\obj\Debug\Helper_MarkupCompile.lref
+E:\CSharp\Helper\Helper\obj\Debug\concreteHelpForm.baml
+E:\CSharp\Helper\Helper\obj\Debug\concreteHelpForm.g.cs
+E:\CSharp\Helper\Helper\obj\Debug\Helper_MarkupCompile.lref
+E:\CSharp\Helper\Helper\obj\Debug\addNewCategory.baml
+E:\CSharp\Helper\Helper\obj\Debug\addNewHelpForm.baml
+E:\CSharp\Helper\Helper\obj\Debug\addNewCategory.g.cs
+E:\CSharp\Helper\Helper\obj\Debug\addNewHelpForm.g.cs
+E:\CSharp\Helper\Helper\obj\Debug\Helper_Content.g.cs
+E:\CSharp\Helper\Helper\bin\Debug\helper.sdf
+E:\CSharp\Helper\Helper\obj\Debug\Helper.csprojResolveAssemblyReference.cache
