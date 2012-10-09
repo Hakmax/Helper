@@ -1,0 +1,85 @@
+﻿<Window x:Class="Helper.addNewCategory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:local="clr-namespace:Helper"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="300" Width="300" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" MaxWidth="280" ResizeMode="NoResize" Topmost="True">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:addNewCategory.RemoveCategoryCommand}" CanExecute="RemoveCategory_CanExecute" Executed="RemoveCategory_Execute"/>
+        <CommandBinding Command="{x:Static local:addNewCategory.AddCategoryCommand}" CanExecute="AddNewCategory_CanExecute" Executed="AddNewCategory_Execute"/>
+        <CommandBinding Command="{x:Static local:addNewCategory.ShowEditPanelCategoryCommand}" CanExecute="RemoveCategory_CanExecute" Executed="ShowEditPanelCategory_Execute"/>
+        <CommandBinding Command="{x:Static local:addNewCategory.EditCategoryCommand}" CanExecute="EditCategory_CanExecute" Executed="EditCategory_Execute"/>
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="categoriesListView" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название категории" Width="250" DisplayMemberBinding="{Binding name_TypeHelp}"/>
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Command="{x:Static local:addNewCategory.RemoveCategoryCommand}" Header="Удалить категорию"/>
+                    <MenuItem  Header="Редактировать категорию" Command="{x:Static local:addNewCategory.ShowEditPanelCategoryCommand}"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.ToolTip>
+                <StackPanel>
+                    <Label>Для удаления категории щёлкните правой клавишей мыши</Label>
+                </StackPanel>
+            </ListView.ToolTip>
+        </ListView>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="3" BorderBrush="#FFDEE2EE" CornerRadius="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label>Имя категории:</Label>
+                <TextBox x:Name="categoryTextBox" Grid.Row="1" Grid.ColumnSpan="2"></TextBox>
+                <CheckBox x:Name="checkBox1" Grid.Row="2" Grid.ColumnSpan="2" Margin="5,0,0,0">Не закрывать окно после добавления</CheckBox>
+                <Button Command="{x:Static local:addNewCategory.AddCategoryCommand}" Grid.Row="3" x:Name="okButton" Grid.Column="0" IsDefault="True">ОК</Button>
+                <Button Grid.Row="3" Grid.Column="1" IsDefault="True" IsCancel="True" x:Name="cancelButton">Отмена</Button>
+            </Grid>
+        </Border>
+        <Grid x:Name="InputBox" Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.5"/>
+            <Border
+            MinWidth="250" 
+            BorderBrush="Black" 
+            BorderThickness="1" 
+            CornerRadius="0,55,0,55" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FFEBEEAE" Offset="0.377"/>
+                        <GradientStop Color="#FFFBDBDB" Offset="1"/>
+                        <GradientStop Color="#FFE6CACA"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Margin="5" Text="Имя категории для редактирования:" FontWeight="Bold" FontFamily="Cambria" />
+                    <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="editCategoryTextBox"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="YesButton" Content="Сохранить" Command="{x:Static local:addNewCategory.EditCategoryCommand}"/>
+                        <Button x:Name="NoButton" Content="Отмена" Click="NoButton_Click_1"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
