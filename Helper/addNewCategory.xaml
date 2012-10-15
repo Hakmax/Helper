@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Helper.addNewCategory"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:local="clr-namespace:Helper"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="300" Width="300" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" MaxWidth="280" ResizeMode="NoResize" Topmost="True">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="300" Width="300" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" MaxWidth="280" ResizeMode="NoResize">
 
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:addNewCategory.RemoveCategoryCommand}" CanExecute="RemoveCategory_CanExecute" Executed="RemoveCategory_Execute"/>

@@ -1,7 +1,55 @@
 ﻿<Window x:Class="Helper.addNewHelpForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="addNewHelpForm" Height="300" Width="300">
+        xmlns:local="clr-namespace:Helper"
+        Title="addNewHelpForm" Height="300" Width="300" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:addNewHelpForm.AddNewHelpCommand}" x:Name="addNewHelp" CanExecute="addNewHelp_CanExecute" Executed="addNewHelp_Executed"></CommandBinding>
+    </Window.CommandBindings>
+    <Window.Resources>
+        
+    </Window.Resources>
+    
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Background="BlanchedAlmond">
+            <Label Content="Выберите язык:"></Label>
+            <ComboBox x:Name="languageComboBox" VerticalAlignment="Top" MinWidth="180" Margin="5"></ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Background="CornflowerBlue">
+            <Label Content="Введите Заголовок:"></Label>
+            <TextBox x:Name="headerTextBox"></TextBox>
+        </StackPanel>
+
+        <Border Grid.Row="2"  Background="Aquamarine" BorderBrush="Aqua" BorderThickness="3" CornerRadius="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Content="Введите текст подсказки:"></Label>
+                <TextBox x:Name="helpTextBox" Grid.Row="1" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"></TextBox>
+            </Grid>
+        </Border>
+        <Border Grid.Row="3" Background="Bisque" BorderBrush="Azure" BorderThickness="3" CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Добавить" IsDefault="True" Style="{StaticResource DialogButtonStyle}" Command="{x:Static local:addNewHelpForm.AddNewHelpCommand}"/>
+                <Button Content="Отмена" Grid.Column="1" Style="{StaticResource DialogButtonStyle}" IsCancel="True" x:Name="cancelButton" Click="cancelButton_Click">
+
+                    
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

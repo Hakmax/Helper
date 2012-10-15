@@ -8,10 +8,76 @@
             <Setter  Property="Margin" Value="5"/>
             <Setter Property="Background" Value="Azure"/>
         </Style>
+
+        <!-- Диалоговые кнопки-->
+        <Style x:Key="DialogButtonStyle" TargetType="Button" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Margin="{TemplateBinding Margin}">
+                            <Ellipse x:Name="ellipseDialog" Fill="LightBlue" Height="20">
+                            </Ellipse>
+                            <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Fill" TargetName="ellipseDialog" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Fill" TargetName="ellipseDialog" Value="#FFCFCFF7"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <!-- TextBox с закруглёнными углами-->
+        <Style TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="Width" Value="Auto">
+                                <Setter Property="MinWidth" Value="100"/>
+                            </Trigger>
+                            <Trigger Property="Height" Value="Auto">
+                                <Setter Property="MinHeight" Value="20"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        
+        <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
+            <Grid Margin="{TemplateBinding Margin}"
+          Height="{TemplateBinding Height}"
+          Width="{TemplateBinding Width}">
+                <Ellipse x:Name="ButtonEllipse"
+                    Height="100" Width="100"
+                    Fill="LightBlue">
+                </Ellipse>
+
+            </Grid>
+        </ControlTemplate>
+
         <DataTemplate x:Key="cellTemplate">
             <Grid>
                 <StackPanel Background="AntiqueWhite" Orientation="Horizontal">
-                    <TextBlock Text="{Binding headerHelp}"></TextBlock>
+                    <TextBox MaxLength="50" Text="{Binding helpText}"></TextBox>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -60,4 +126,7 @@
             <Setter Property="Margin" Value="5"></Setter>
         </Style>
     </Application.Resources>
+
+
+
 </Application>

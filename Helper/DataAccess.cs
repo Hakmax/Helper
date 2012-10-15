@@ -10,13 +10,29 @@ namespace Helper
     {
 
         #region Help
+        public static event Action NewHelpAdded;
         public static List<helps> GetAllHelp()
         {
             using (Entities context = new Entities())
             {
-                return context.helps.Include("helpType").ToList();                
+                return context.helps.Include("helpType").ToList();
             }
         }
+
+        public static bool AddNewHelp(helps help)
+        {
+            using (Entities context = new Entities())
+            {
+                if (context.helps.FirstOrDefault(item => item.headerHelp == help.headerHelp) != null)
+                    return false;
+                context.helps.AddObject(help);
+                context.SaveChanges();
+                if (NewHelpAdded != null)
+                    NewHelpAdded();
+                return true;
+            }            
+        }
+
         #endregion
 
         #region HelpTypes
@@ -36,11 +52,12 @@ namespace Helper
             {
                 context.helpType.DeleteObject(context.helpType.FirstOrDefault(x => x.id_HelpType == helptype.id_HelpType));
                 context.SaveChanges();
-                CategoriesChanged();
+                if (CategoriesChanged != null)
+                    CategoriesChanged();
             }
         }
 
-        public static bool AddCategory(String categoryName) 
+        public static bool AddCategory(String categoryName)
         {
             using (Entities context = new Entities())
             {
@@ -48,23 +65,25 @@ namespace Helper
                     return false;
                 context.helpType.AddObject(new helpType() { name_TypeHelp = categoryName });
                 context.SaveChanges(System.Data.Objects.SaveOptions.AcceptAllChangesAfterSave);
-                CategoriesChanged();
+                if (CategoriesChanged != null)
+                    CategoriesChanged();
                 return true;
             }
         }
 
-        public static bool UpdateExistingCategory(helpType category, string newCategoryName) 
+        public static bool UpdateExistingCategory(helpType category, string newCategoryName)
         {
             using (Entities context = new Entities())
             {
-                if (context.helpType.FirstOrDefault(c=>c.name_TypeHelp==newCategoryName && c.id_HelpType!=category.id_HelpType) != null)
+                if (context.helpType.FirstOrDefault(c => c.name_TypeHelp == newCategoryName && c.id_HelpType != category.id_HelpType) != null)
                     return false;
-                helpType h=context.helpType.FirstOrDefault(x => x.id_HelpType == category.id_HelpType);
+                helpType h = context.helpType.FirstOrDefault(x => x.id_HelpType == category.id_HelpType);
                 if (h.name_TypeHelp != newCategoryName)
                 {
                     h.name_TypeHelp = newCategoryName;
                     context.SaveChanges();
-                    CategoriesChanged();
+                    if (CategoriesChanged != null)
+                        CategoriesChanged();
                 }
                 return true;
             }

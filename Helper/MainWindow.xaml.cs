@@ -25,6 +25,10 @@ namespace Helper
         public MainWindow()
         {
             InitializeComponent();
+            DataAccess.NewHelpAdded += new Action(() =>
+            {
+                helpersListView.ItemsSource = DataAccess.GetAllHelp();
+            });
             helpersListView.ItemsSource = DataAccess.GetAllHelp();
         }
 
@@ -68,6 +72,14 @@ namespace Helper
         {
             if (aboutAuthorPanel.Visibility == System.Windows.Visibility.Visible)
                 e.Handled = true;
+        }
+
+        private void addHelperButton_Click(object sender, RoutedEventArgs e)
+        {
+            addNewHelpForm form = new addNewHelpForm();
+            hiddenGrid.Visibility = System.Windows.Visibility.Visible;
+            form.ShowDialog();
+            hiddenGrid.Visibility = System.Windows.Visibility.Collapsed;
         }
     }
 }

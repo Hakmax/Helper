@@ -19,7 +19,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border CornerRadius="0,0,10,10" BorderThickness="3" BorderBrush="Black">
+        <Border CornerRadius="0,0,10,10" BorderThickness="3" BorderBrush="Black" Margin="1,0,-1,0">
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Horizontal" Margin="4">
                     <Button x:Name="settingsButton" Click="settingsButton_Click" ToolTip="Настройки">
@@ -29,7 +29,7 @@
                         <Image Source="Icons\categories.png"></Image>
                     </Button>
 
-                    <Button x:Name="addHelperButton" ToolTip="Добавить новую подсказку">
+                    <Button x:Name="addHelperButton" ToolTip="Добавить новую подсказку" Click="addHelperButton_Click">
                         <Image Source="Icons\addnew.png"></Image>
                     </Button>
                     <Button x:Name="searchButton" ToolTip="Поиск" >
@@ -64,8 +64,11 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Автор программы: Богданов Максим</TextBlock>
                     <Button Width="50" x:Name="okAuthorPanelButton" Click="okAuthorPanelButton_Click_1">Ок</Button>
                 </StackPanel>
-            </Border>
-                
+            </Border>                
+        </Grid>
+        
+        <Grid x:Name="hiddenGrid" Grid.RowSpan="3" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.5"></Grid>
         </Grid>
     </Grid>
 </Window>
